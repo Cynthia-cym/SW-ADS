@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "features": "产品功能",
+    "platforms": "全球平台",
+    "solutions": "解决方案",
+    "resources": "资源中心",
+    "login": "登录",
+    "trial": "免费试用14天"
+  },
+  "hero": {
+    "title": "AI一键广告投放，让增长自动发生",
+    "subtitle": "全球首个\"需求驱动型\"多平台出海广告投放平台。无需学习复杂规则，用自然语言描述需求，AI自动适配VK、Yandex、TikTok、Meta等全球主流平台。",
+    "ctaPrimary": "立即免费试用",
+    "ctaSecondary": "预约产品演示",
+    "tagPlatforms": "一键覆盖10+全球广告平台",
+    "tagVK": "已支持VK",
+    "tagComing": "即将上线Yandex·传音·华为·小米"
+  },
+  "preview": {
+    "title": "选择SW ADS的核心理由",
+    "cards": [
+      { "title": "AI智能搭建", "desc": "一次输入需求，AI自动生成全平台广告方案" },
+      { "title": "全平台统一管理", "desc": "一个后台掌控所有平台，批量编辑推送" },
+      { "title": "演程智能决策", "desc": "数据驱动，跨平台智能对比与预算分配" },
+      { "title": "全球平台覆盖", "desc": "10+全球平台深度对接，持续扩展新兴市场" }
+    ]
+  },
+  "painPoints": {
+    "title": "告别传统广告投放的6大噩梦",
+    "subtitle": "传统多平台投放的痛点，我们用AI逐一击破",
+    "traditional": "传统多平台投放",
+    "swads": "SW ADS AI一键投放"
+  },
+  "process": {
+    "title": "只需3步，AI一键完成全球投放",
+    "steps": [
+      { "title": "输入需求", "desc": "用普通话告诉AI你要投什么、投哪里", "detail": "AI自动识别所有平台需求，统一补全缺失信息" },
+      { "title": "一键确认", "desc": "检查核心信息，一键推送到所有目标平台", "detail": "全平台自动校验，版本锁定，安全可靠" },
+      { "title": "自动增长", "desc": "演程全程监控优化，让增长自动发生", "detail": "自动分配预算，异常预警，效果对比分析" }
+    ]
+  },
+  "capabilities": {
+    "title": "四大核心能力，打造真正的一键投放",
+    "subtitle": "从搭建到优化，全链路AI赋能全球广告投放"
+  },
+  "platformCoverage": {
+    "title": "一键覆盖全球高增长市场",
+    "subtitle": "深度优化新兴市场，同时支持全球主流平台。每个平台均实现深度API对接与规则适配，支持完整的一键自动化投放流程。",
+    "active": "已上线",
+    "coming": "即将上线",
+    "planned": "规划中"
+  },
+  "stats": {
+    "title": "数据见证，效率革命",
+    "hint": "一个优化师即可管理原来5个团队的全球投放工作量"
+  },
+  "industries": {
+    "title": "覆盖全行业，精准触达目标用户",
+    "subtitle": "无论您的业务规模与行业，SW ADS 都能提供量身定制的投放方案"
+  },
+  "security": {
+    "title": "企业级安全，值得信赖",
+    "subtitle": "您的数据安全是我们的首要任务"
+  },
+  "cta": {
+    "title": "立即开启您的全球自动化投放之旅",
+    "subtitle": "免费试用14天，无需绑定信用卡，专属出海顾问1对1指导",
+    "button": "立即免费注册",
+    "demo": "预约产品演示",
+    "social": "已服务 200+ 出海游戏与应用团队，覆盖 10+ 国家和地区"
+  },
+  "footer": {
+    "description": "AI原生的全球多平台出海广告投放平台",
+    "product": "产品",
+    "resources": "资源",
+    "company": "公司",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "copyright": "© 2026 SW ADS. All rights reserved."
+  }
+}

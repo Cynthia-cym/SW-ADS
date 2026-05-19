@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "features": "Features",
+    "platforms": "Platforms",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "login": "Login",
+    "trial": "Free 14-Day Trial"
+  },
+  "hero": {
+    "title": "AI-Powered Ad Placement, Let Growth Happen Automatically",
+    "subtitle": "The world's first \"demand-driven\" multi-platform overseas ad platform. No need to learn complex rules — describe your needs in natural language, and AI auto-adapts to VK, Yandex, TikTok, Meta, and other global platforms.",
+    "ctaPrimary": "Start Free Trial Now",
+    "ctaSecondary": "Book a Demo",
+    "tagPlatforms": "One-click coverage across 10+ global ad platforms",
+    "tagVK": "VK Supported",
+    "tagComing": "Yandex · Transsion · Huawei · Xiaomi Coming Soon"
+  },
+  "preview": {
+    "title": "Why Choose SW ADS",
+    "cards": [
+      { "title": "AI Smart Build", "desc": "One input, AI generates ad plans for all platforms" },
+      { "title": "Unified Management", "desc": "One dashboard for all platforms, bulk edit & push" },
+      { "title": "Intelligent Analytics", "desc": "Data-driven cross-platform comparison & budget optimization" },
+      { "title": "Global Coverage", "desc": "10+ platforms deeply integrated, expanding continuously" }
+    ]
+  },
+  "painPoints": {
+    "title": "Say Goodbye to the 6 Nightmares of Traditional Ad Buying",
+    "subtitle": "We crush every pain point with AI",
+    "traditional": "Traditional Multi-Platform",
+    "swads": "SW ADS AI One-Click"
+  },
+  "process": {
+    "title": "Just 3 Steps to Global Ad Placement with AI",
+    "steps": [
+      { "title": "Describe Need", "desc": "Tell AI what and where to advertise in plain language", "detail": "AI auto-identifies all platform requirements and fills in missing info" },
+      { "title": "One-Click Confirm", "desc": "Review key info, push to all target platforms with one click", "detail": "Cross-platform auto-validation, version locking, safe and reliable" },
+      { "title": "Auto Growth", "desc": "Continuous monitoring and optimization, let growth happen", "detail": "Auto budget allocation, anomaly alerts, performance comparison" }
+    ]
+  },
+  "capabilities": {
+    "title": "Four Core Capabilities for True One-Click Ad Placement",
+    "subtitle": "From setup to optimization, full-chain AI empowers global advertising"
+  },
+  "platformCoverage": {
+    "title": "One-Click Coverage of Global High-Growth Markets",
+    "subtitle": "Deep optimization for emerging markets while supporting global mainstream platforms. Each platform features deep API integration and rule adaptation for complete one-click automated delivery.",
+    "active": "Live",
+    "coming": "Coming Soon",
+    "planned": "Planned"
+  },
+  "stats": {
+    "title": "Data-Driven, Efficiency Revolution",
+    "hint": "One optimizer can manage the workload of 5 traditional teams globally"
+  },
+  "industries": {
+    "title": "Covering All Industries, Precisely Reach Target Users",
+    "subtitle": "Whatever your business size and industry, SW ADS provides tailored advertising solutions"
+  },
+  "security": {
+    "title": "Enterprise-Grade Security You Can Trust",
+    "subtitle": "Your data security is our top priority"
+  },
+  "cta": {
+    "title": "Start Your Global Automated Advertising Journey Now",
+    "subtitle": "Free 14-day trial, no credit card required. Dedicated overseas consultant for 1-on-1 guidance.",
+    "button": "Start Free Registration",
+    "demo": "Book a Demo",
+    "social": "Serving 200+ overseas gaming & app teams across 10+ countries and regions"
+  },
+  "footer": {
+    "description": "AI-Native Global Multi-Platform Overseas Ad Platform",
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 SW ADS. All rights reserved."
+  }
+}

@@ -1,0 +1,36 @@
+---
+const industries = [
+  { icon: '🎮', name: '游戏出海', desc: '精准触达新兴市场玩家，本地化素材AI自动生成' },
+  { icon: '📱', name: '应用推广', desc: '跨平台批量投放，ASO与买量数据联动分析' },
+  { icon: '🛒', name: '跨境电商', desc: '多市场多平台同步上线，ROAS自动优化' },
+  { icon: '💳', name: '金融科技', desc: '合规投放框架，自动适配各市场金融广告规则' },
+  { icon: '📚', name: '在线教育', desc: '低成本获客，基于用户画像的精准定向投放' },
+  { icon: '🏢', name: '企业服务', desc: 'B2B精准定向，多区域统一品牌投放管理' },
+];
+---
+
+<section id="solutions" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">
+      覆盖全行业，精准触达目标用户
+    </h2>
+    <p class="text-center text-slate-400 mb-16">
+      无论您的业务规模与行业，SW ADS 都能提供量身定制的投放方案
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {industries.map((ind) => (
+        <a
+          href={`/solutions/${ind.name}`}
+          class="group p-6 rounded-2xl glass border-white/[0.04] hover:border-blue-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"
+        >
+          <span class="text-2xl mb-3 block">{ind.icon}</span>
+          <h3 class="font-semibold text-white mb-1.5 group-hover:text-blue-400 transition-colors">
+            {ind.name}
+          </h3>
+          <p class="text-sm text-slate-400 leading-relaxed">{ind.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

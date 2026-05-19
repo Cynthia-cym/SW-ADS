@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import AnalyticsTracker from '../components/astro/AnalyticsTracker.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  locale?: string;
+}
+
+const {
+  title = 'SW ADS — AI一键广告投放，让增长自动发生',
+  description = '全球首个需求驱动型多平台出海广告投放平台。AI自动适配VK、Yandex、TikTok、Meta等全球主流平台，一键推送上线。',
+  image = '/images/og-default.png',
+  locale = 'zh-CN',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="SW ADS" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={`{
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SW ADS",
+      "applicationCategory": "BusinessApplication",
+      "description": "${description}",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY",
+        "description": "14天免费试用"
+      }
+    }`} />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Hreflang tags -->
+    <link rel="alternate" hreflang="zh-Hans" href={new URL('/', Astro.site).href} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site).href} />
+    <link rel="alternate" hreflang="ru" href={new URL('/ru/', Astro.site).href} />
+    <link rel="alternate" hreflang="ar" href={new URL('/ar/', Astro.site).href} />
+    <link rel="alternate" hreflang="pt" href={new URL('/pt/', Astro.site).href} />
+    <link rel="alternate" hreflang="id" href={new URL('/id/', Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+  </head>
+  <body class="min-h-screen bg-brand-bg text-white antialiased">
+    <slot />
+    <AnalyticsTracker />
+  </body>
+</html>

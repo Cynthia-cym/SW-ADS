@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/react/Navbar';
+import HeroSection from '../components/react/HeroSection';
+import PainPointComparison from '../components/react/PainPointComparison';
+import ProcessSteps from '../components/react/ProcessSteps';
+import CapabilityDetails from '../components/react/CapabilityDetails';
+import PlatformCoverage from '../components/react/PlatformCoverage';
+import CounterSection from '../components/react/CounterSection';
+import IndustrySolutions from '../components/astro/IndustrySolutions.astro';
+import SecuritySection from '../components/astro/SecuritySection.astro';
+import FinalCTA from '../components/react/FinalCTA';
+import Footer from '../components/astro/Footer.astro';
+---
+
+<Layout
+  title="SW ADS — AI一键广告投放，让增长自动发生"
+  description="全球首个需求驱动型多平台出海广告投放平台。AI自动适配VK、Yandex、TikTok、Meta等全球主流平台，一键推送上线。"
+>
+  <Navbar client:load />
+
+  <main>
+    <HeroSection client:visible />
+
+    <!-- Spacer for hero preview cards overlap -->
+    <div class="hidden lg:block h-56" aria-hidden="true" />
+
+    <PainPointComparison client:visible />
+    <ProcessSteps client:visible />
+    <CapabilityDetails client:visible />
+    <PlatformCoverage client:visible />
+    <CounterSection client:visible />
+    <IndustrySolutions />
+    <SecuritySection />
+    <FinalCTA client:visible />
+  </main>
+
+  <Footer />
+</Layout>
