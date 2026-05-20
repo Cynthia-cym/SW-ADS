@@ -1,61 +1,80 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { SiVk, SiTiktok, SiMeta, SiHuawei, SiXiaomi } from 'react-icons/si';
+import { FaYandex } from 'react-icons/fa6';
+import '../../lib/i18n';
 import TypewriterText from './TypewriterText';
 
+const brandColors: Record<string, string> = {
+  VK: '#0077FF',
+  Yandex: '#FC3F1D',
+  TikTok: '#000000',
+  Meta: '#0866FF',
+  Huawei: '#CF0A2C',
+  Xiaomi: '#FF6900',
+  Transsion: '#6C2BD9',
+};
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  VK: SiVk,
+  Yandex: FaYandex,
+  TikTok: SiTiktok,
+  Meta: SiMeta,
+  Huawei: SiHuawei,
+  Xiaomi: SiXiaomi,
+};
+
+const PlatformLogo = ({ name, className = '' }: { name: string; className?: string }) => {
+  const Icon = iconMap[name];
+  if (Icon) {
+    return (
+      <span className={`${className} flex items-center justify-center rounded-xl`} style={{ backgroundColor: brandColors[name] }}>
+        <Icon className="w-[58%] h-[58%] text-white" />
+      </span>
+    );
+  }
+  // Transsion — custom: aurora purple, T with three-step motif (no library icon exists)
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none">
+      <defs>
+        <linearGradient id="transsionGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#7C3AED" />
+          <stop offset="50%" stopColor="#6D28D9" />
+          <stop offset="100%" stopColor="#4C1D95" />
+        </linearGradient>
+      </defs>
+      <rect width="48" height="48" rx="12" fill="url(#transsionGrad)" />
+      <g transform="translate(11.5,10)" fill="white">
+        {/* T vertical stem */}
+        <rect x="10.5" y="8" width="4" height="20" rx="2" />
+        {/* Three ascending steps — Transsion's "Step" brand symbol */}
+        <rect x="0" y="12" width="10" height="3.5" rx="1.5" />
+        <rect x="2.5" y="6" width="11" height="3.5" rx="1.5" />
+        <rect x="5.5" y="0" width="11" height="3.5" rx="1.5" />
+      </g>
+    </svg>
+  );
+};
+
+// Orbit distribution — icons surround the device on all sides
 const platforms = [
-  { name: 'VK', x: '30%', y: '20%', active: true },
-  { name: 'Yandex', x: '65%', y: '15%', active: false },
-  { name: '传音', x: '80%', y: '45%', active: false },
-  { name: '华为', x: '65%', y: '80%', active: false },
-  { name: '小米', x: '30%', y: '85%', active: false },
-  { name: 'TikTok', x: '12%', y: '55%', active: false },
-  { name: 'Meta', x: '45%', y: '8%', active: false },
+  { name: 'Meta', x: '6%', y: '30%', active: true, tier: 'lg' },
+  { name: 'Xiaomi', x: '12%', y: '68%', active: false, tier: 'md' },
+  { name: 'Transsion', x: '30%', y: '6%', active: false, tier: 'md' },
+  { name: 'Huawei', x: '58%', y: 'calc(5% + 20px)', active: true, tier: 'lg' },
+  { name: 'Yandex', x: '86%', y: '22%', active: false, tier: 'md' },
+  { name: 'VK', x: '90%', y: '55%', active: true, tier: 'lg' },
+  { name: 'TikTok', x: '82%', y: '75%', active: false, tier: 'md' },
 ];
 
-const previewCards = [
-  {
-    id: 'ai-build',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-      </svg>
-    ),
-    title: 'AI智能搭建',
-    desc: '一次输入需求，AI自动生成全平台广告方案',
-  },
-  {
-    id: 'unified',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 13.5V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000 3m0 9.75V10.5" />
-      </svg>
-    ),
-    title: '全平台统一管理',
-    desc: '一个后台掌控所有平台，批量编辑推送',
-  },
-  {
-    id: 'analytics',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-      </svg>
-    ),
-    title: '演程智能决策',
-    desc: '数据驱动，跨平台智能对比与预算分配',
-  },
-  {
-    id: 'coverage',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-      </svg>
-    ),
-    title: '全球平台覆盖',
-    desc: '10+全球平台深度对接，持续扩展新兴市场',
-  },
-];
+const tierConfig: Record<string, { scale: number; sizeClass: string; glowClass: string }> = {
+  lg: { scale: 1.5, sizeClass: 'w-12 h-12', glowClass: 'shadow-[0_0_24px_rgba(59,130,246,0.55),0_0_48px_rgba(59,130,246,0.2)] ring-1 ring-white/10' },
+  md: { scale: 1.15, sizeClass: 'w-10 h-10', glowClass: 'shadow-[0_0_14px_rgba(59,130,246,0.35)] ring-1 ring-white/5' },
+};
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showCTAs, setShowCTAs] = useState(false);
 
@@ -74,26 +93,61 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-brand-bg" />
-      <div className="absolute inset-0 grid-bg opacity-50" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
+
+      {/* Meteor lines */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          { x1: '10%', y1: '0%', x2: '30%', y2: '60%', d: 3 },
+          { x1: '85%', y1: '10%', x2: '60%', y2: '80%', d: 2.5 },
+          { x1: '40%', y1: '0%', x2: '70%', y2: '40%', d: 2 },
+          { x1: '5%', y1: '30%', x2: '25%', y2: '90%', d: 4 },
+          { x1: '70%', y1: '0%', x2: '90%', y2: '50%', d: 1.8 },
+        ].map((m, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"
+            style={{
+              left: m.x1,
+              top: m.y1,
+              width: '200px',
+              transform: `rotate(${30 + i * 5}deg)`,
+            }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: [0, 0.6, 0], x: [0, 300] }}
+            transition={{
+              duration: m.d,
+              repeat: Infinity,
+              delay: i * 1.5 + Math.random(),
+              repeatDelay: 2 + Math.random() * 3,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 40 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              width: `${2 + Math.random() * 3}px`,
+              height: `${2 + Math.random() * 3}px`,
+              background: Math.random() > 0.5 ? '#3B82F6' : '#00E5FF',
+              opacity: 0.3 + Math.random() * 0.4,
+              boxShadow: '0 0 4px currentColor',
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0, 1, 0],
+              y: [0, -40, 0],
+              opacity: [0, 0.8, 0],
             }}
             transition={{
-              duration: 2 + Math.random() * 4,
+              duration: 2 + Math.random() * 5,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: Math.random() * 6,
               ease: 'easeInOut',
             }}
           />
@@ -101,17 +155,28 @@ export default function HeroSection() {
       </div>
 
       {/* Glow orbs */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/3 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-blue-600/8 rounded-full blur-[150px]" />
+      <div className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px]" />
+      {/* Center AI glow — positioned over the right visual area */}
+      <div className="absolute top-1/2 right-[25%] -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-[140px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 w-full py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-[90rem] mx-auto px-6 sm:px-8 w-full py-24 lg:py-28">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Text content */}
           <div className="z-10">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+              <span
+                className="text-transparent"
+                style={{
+                  background: 'linear-gradient(to right, #3B82F6, #818CF8, #C084FC)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >AI</span>
               <TypewriterText
-                text="AI一键广告投放，让增长自动发生"
-                speed={50}
+                text={t('hero.title')}
+                speed={70}
                 className="text-white"
                 onComplete={handleTypeComplete}
               />
@@ -121,9 +186,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={showSubtitle ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6 }}
-              className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-xl"
+              className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl"
             >
-              全球首个"需求驱动型"多平台出海广告投放平台。无需学习复杂规则，用自然语言描述需求，AI自动适配VK、Yandex、TikTok、Meta等全球主流平台。
+              {t('hero.subtitle')}
             </motion.p>
 
             {/* CTAs */}
@@ -134,23 +199,23 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-4 mb-8"
             >
               <a
-                href="/signup"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold text-base hover:shadow-xl hover:shadow-blue-500/25 hover:scale-105 transition-all duration-200"
+                href="https://ads.mincode.cn/"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold text-base shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 transition-all duration-200"
               >
-                立即免费试用
+                {t('hero.ctaPrimary')}
                 <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
               <a
-                href="/demo"
+                href="https://ads.mincode.cn/"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-white font-medium text-base hover:bg-white/5 hover:border-white/40 transition-all duration-200"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
                 </svg>
-                预约产品演示
+                {t('hero.ctaSecondary')}
               </a>
             </motion.div>
 
@@ -162,99 +227,317 @@ export default function HeroSection() {
               className="flex flex-wrap gap-3"
             >
               <span className="text-xs font-medium px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300">
-                一键覆盖10+全球广告平台
+                {t('hero.tagPlatforms')}
               </span>
               <span className="text-xs font-medium px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-300">
-                已支持VK
+                {t('hero.tagVK')}
               </span>
               <span className="text-xs font-medium px-3 py-1.5 rounded-full bg-slate-500/10 border border-slate-500/20 text-slate-400">
-                即将上线Yandex·传音·华为·小米
+                {t('hero.tagComing')}
               </span>
             </motion.div>
           </div>
 
-          {/* Right: Visual focal point */}
-          <div className="relative h-[400px] lg:h-[550px] flex items-center justify-center">
-            {/* Glowing tablet / AI core */}
+          {/* Right: Enhanced Visual — Tablet at bottom-center, icons fanning upward */}
+          <div className="relative h-[500px] lg:h-[680px] flex items-end justify-center pb-6 lg:pb-10">
+            {/* Orbit rings SVG — solid rings with breathing particles, enter last */}
+            <motion.svg
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2, duration: 0.8 }}
+              className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+              viewBox="0 0 400 540"
+            >
+              <defs>
+                <filter id="orbitGlow">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Outer ring — r=235, 0.6px thin, slow */}
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 200 270" to="360 200 270" dur="55s" repeatCount="indefinite" />
+                <circle cx="200" cy="270" r="240" fill="none" stroke="rgba(59,130,246,0.09)" strokeWidth="0.6" />
+                {[0, 60, 120, 180, 240, 300].map((angle, j) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const cx = 200 + 240 * Math.cos(rad);
+                  const cy = 270 + 240 * Math.sin(rad);
+                  return (
+                    <circle key={j} cx={cx} cy={cy} r="1.6" fill="#60A5FA" filter="url(#orbitGlow)">
+                      <animate attributeName="opacity" values="0.05;0.45;0.05" dur={`${4.5 + j * 0.35}s`} repeatCount="indefinite" />
+                    </circle>
+                  );
+                })}
+              </g>
+
+              {/* Middle ring — r=210, 1.2px + 1px glow, hero */}
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="360 200 270" to="0 200 270" dur="40s" repeatCount="indefinite" />
+                <circle cx="200" cy="270" r="210" fill="none" stroke="rgba(59,130,246,0.14)" strokeWidth="1.2" />
+                <circle cx="200" cy="270" r="210" fill="none" stroke="rgba(96,165,250,0.05)" strokeWidth="2.2" />
+                {[30, 90, 150, 210, 270, 330].map((angle, j) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const cx = 200 + 210 * Math.cos(rad);
+                  const cy = 270 + 210 * Math.sin(rad);
+                  return (
+                    <circle key={j} cx={cx} cy={cy} r="2" fill="white" filter="url(#orbitGlow)">
+                      <animate attributeName="opacity" values="0.05;0.7;0.05" dur={`${3.2 + j * 0.25}s`} repeatCount="indefinite" />
+                    </circle>
+                  );
+                })}
+              </g>
+
+              {/* Inner ring — r=180, 0.8px thin, fast */}
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 200 270" to="360 200 270" dur="28s" repeatCount="indefinite" />
+                <circle cx="200" cy="270" r="180" fill="none" stroke="rgba(0,229,255,0.07)" strokeWidth="0.8" />
+                {[15, 75, 135, 195, 255, 315].map((angle, j) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const cx = 200 + 180 * Math.cos(rad);
+                  const cy = 270 + 180 * Math.sin(rad);
+                  return (
+                    <circle key={j} cx={cx} cy={cy} r="1.4" fill="#67E8F9" filter="url(#orbitGlow)">
+                      <animate attributeName="opacity" values="0.04;0.55;0.04" dur={`${2.5 + j * 0.2}s`} repeatCount="indefinite" />
+                    </circle>
+                  );
+                })}
+              </g>
+            </motion.svg>
+
+            {/* Main AI Tablet/Device */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, ease: 'easeOut' }}
               className="relative z-10"
             >
-              {/* Main AI tablet */}
-              <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-3xl glass border-blue-500/30 glow flex flex-col items-center justify-center overflow-hidden">
-                {/* Dashboard mockup inside tablet */}
-                <div className="absolute inset-4 rounded-2xl bg-brand-surface/80 overflow-hidden">
-                  <div className="p-4 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-semibold text-blue-400">SW ADS Dashboard</span>
-                      <span className="text-[8px] text-green-400">● Live</span>
+              {/* Glow rings around tablet */}
+              <div className="absolute inset-0 w-[300px] h-[420px] rounded-[36px] bg-blue-500/10 blur-2xl -z-10" />
+              <div className="absolute -inset-2 rounded-[38px] border border-blue-400/20 animate-pulse-glow" />
+
+              {/* Tablet body */}
+              <div className="relative w-72 h-[400px] sm:w-80 sm:h-[440px] rounded-[32px] bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-950/90 border border-blue-400/20 shadow-2xl shadow-blue-500/10 overflow-hidden backdrop-blur-sm">
+                {/* Tablet camera notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-slate-700/60 rounded-b-full z-20" />
+
+                {/* Dashboard screen */}
+                <div className="absolute inset-3 rounded-[24px] bg-brand-surface/80 border border-white/[0.06] overflow-hidden">
+                  {/* Screen header */}
+                  <div className="px-4 pt-4 pb-2 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px] shadow-blue-400/50" />
+                      <span className="text-[10px] font-semibold text-blue-300 tracking-wide">SW ADS</span>
                     </div>
-                    <div className="h-16 rounded-lg bg-blue-500/10 border border-blue-500/20 p-2">
-                      <div className="flex justify-between items-end h-full">
-                        {[40, 70, 55, 90, 60, 80, 50].map((h, i) => (
-                          <div
-                            key={i}
-                            className="w-[10%] bg-gradient-to-t from-blue-500/60 to-blue-400/40 rounded-sm"
-                            style={{ height: `${h}%` }}
-                          />
-                        ))}
-                      </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_4px] shadow-green-400/50" />
+                      <span className="text-[9px] text-green-400/80">Live</span>
                     </div>
+                  </div>
+
+                  {/* Screen content - Dashboard mockup */}
+                  <div className="px-3 space-y-2.5">
+                    {/* Mini stat cards */}
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="h-10 rounded-lg bg-green-500/10 border border-green-500/20 p-1.5 flex items-center justify-between">
-                        <span className="text-[9px] text-green-300">ROI</span>
-                        <span className="text-[11px] font-bold text-green-400">+320%</span>
+                      <div className="rounded-xl bg-blue-500/5 border border-blue-500/10 p-2.5">
+                        <div className="text-[8px] text-slate-500 mb-0.5">Active Campaigns</div>
+                        <div className="text-lg font-bold text-blue-400">24</div>
+                        <div className="text-[8px] text-green-400/80">↑ 12%</div>
                       </div>
-                      <div className="h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 p-1.5 flex items-center justify-between">
-                        <span className="text-[9px] text-blue-300">Active</span>
-                        <span className="text-[11px] font-bold text-blue-400">12</span>
+                      <div className="rounded-xl bg-cyan-500/5 border border-cyan-500/10 p-2.5">
+                        <div className="text-[8px] text-slate-500 mb-0.5">Avg ROI</div>
+                        <div className="text-lg font-bold text-cyan-400">+320%</div>
+                        <div className="text-[8px] text-green-400/80">↑ 8.5%</div>
                       </div>
                     </div>
-                    <div className="h-10 rounded-lg bg-slate-500/10 border border-slate-500/20 p-2 flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-blue-500/30 flex-shrink-0" />
-                      <div className="flex-1 h-1.5 bg-slate-500/20 rounded-full overflow-hidden">
-                        <div className="h-full w-3/4 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" />
+
+                    {/* Chart area — smooth curve sparkline + breathing */}
+                    <motion.div
+                      className="h-20 rounded-xl bg-white/[0.02] border border-white/[0.05] p-2.5 overflow-hidden"
+                      animate={{ borderColor: ['rgba(255,255,255,0.05)', 'rgba(59,130,246,0.2)', 'rgba(255,255,255,0.05)'] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[8px] text-slate-500">Cross-Platform Performance</span>
+                        <motion.span
+                          className="text-[8px] text-green-400/80"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 1.6 }}
+                        >
+                          +23.5%
+                        </motion.span>
+                      </div>
+                      <div className="relative h-11">
+                        <svg className="w-full h-full" viewBox="0 0 240 44" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="sparkArea" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.35" />
+                              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+                            </linearGradient>
+                            <filter id="sparkGlow">
+                              <feGaussianBlur stdDeviation="1.2" result="blur" />
+                              <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                              </feMerge>
+                            </filter>
+                          </defs>
+                          {/* Grid lines */}
+                          <line x1="0" y1="11" x2="240" y2="11" stroke="white" strokeOpacity="0.04" strokeDasharray="2 4" />
+                          <line x1="0" y1="22" x2="240" y2="22" stroke="white" strokeOpacity="0.04" strokeDasharray="2 4" />
+                          <line x1="0" y1="33" x2="240" y2="33" stroke="white" strokeOpacity="0.04" strokeDasharray="2 4" />
+                          {/* Area fill — smooth curve with breathing */}
+                          <motion.path
+                            d="M0,36 C7,36 13,32 20,32 C27,32 33,34 40,34 C47,34 53,22 60,22 C67,22 73,26 80,26 C87,26 93,14 100,14 C107,14 113,19 120,19 C127,19 133,10 140,10 C147,10 153,17 160,17 C167,17 173,8 180,8 C187,8 193,12 200,12 C207,12 213,4 220,4 C227,4 233,6 240,6 L240,44 L0,44 Z"
+                            fill="url(#sparkArea)"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0.6, 1, 0.6] }}
+                            transition={{ delay: 1.2, duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                          />
+                          {/* Glow line — smooth curve */}
+                          <motion.path
+                            d="M0,36 C7,36 13,32 20,32 C27,32 33,34 40,34 C47,34 53,22 60,22 C67,22 73,26 80,26 C87,26 93,14 100,14 C107,14 113,19 120,19 C127,19 133,10 140,10 C147,10 153,17 160,17 C167,17 173,8 180,8 C187,8 193,12 200,12 C207,12 213,4 220,4 C227,4 233,6 240,6"
+                            fill="none"
+                            stroke="#60A5FA"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            opacity="0.35"
+                            filter="url(#sparkGlow)"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ delay: 1.2, duration: 1.5, ease: 'easeInOut' }}
+                          />
+                          {/* Main line — smooth curve */}
+                          <motion.path
+                            d="M0,36 C7,36 13,32 20,32 C27,32 33,34 40,34 C47,34 53,22 60,22 C67,22 73,26 80,26 C87,26 93,14 100,14 C107,14 113,19 120,19 C127,19 133,10 140,10 C147,10 153,17 160,17 C167,17 173,8 180,8 C187,8 193,12 200,12 C207,12 213,4 220,4 C227,4 233,6 240,6"
+                            fill="none"
+                            stroke="#3B82F6"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ delay: 1.2, duration: 1.5, ease: 'easeInOut' }}
+                          />
+                          {/* Endpoint dot */}
+                          <motion.circle
+                            cx="240" cy="6" r="2.5"
+                            fill="#3B82F6"
+                            filter="url(#sparkGlow)"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.3, 1] }}
+                            transition={{ delay: 2.2, duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                          />
+                          {/* Data point pulses */}
+                          {[
+                            { cx: 100, cy: 14, delay: 2.6 },
+                            { cx: 140, cy: 10, delay: 2.8 },
+                            { cx: 220, cy: 4, delay: 3.0 },
+                          ].map((pt, i) => (
+                            <motion.circle
+                              key={i}
+                              cx={pt.cx} cy={pt.cy} r="1.8"
+                              fill="white"
+                              opacity="0.9"
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: [0, 1, 0], scale: [0, 1.5, 0] }}
+                              transition={{
+                                delay: pt.delay,
+                                duration: 1.8,
+                                repeat: Infinity,
+                                repeatDelay: 3 + i * 0.7,
+                              }}
+                            />
+                          ))}
+                        </svg>
+                      </div>
+                    </motion.div>
+
+                    {/* Platform status rows */}
+                    <div className="space-y-1.5">
+                      {[
+                        { name: 'VK', status: 'Active', color: 'text-green-400', bar: 85 },
+                        { name: 'Yandex', status: 'Setup', color: 'text-yellow-400', bar: 45 },
+                        { name: 'TikTok', status: 'Pending', color: 'text-slate-400', bar: 20 },
+                      ].map((p) => (
+                        <div key={p.name} className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-white/[0.02]">
+                          <span className="text-[10px] font-medium text-slate-300 w-14">{p.name}</span>
+                          <div className="flex-1 h-1 bg-white/[0.04] rounded-full overflow-hidden">
+                            <motion.div
+                              className={`h-full rounded-full bg-gradient-to-r ${
+                                p.bar > 60 ? 'from-blue-500 to-cyan-400' : p.bar > 30 ? 'from-yellow-500/60 to-yellow-400/40' : 'from-slate-600 to-slate-500'
+                              }`}
+                              initial={{ width: 0 }}
+                              animate={{ width: `${p.bar}%` }}
+                              transition={{ delay: 1.5, duration: 1, ease: 'easeOut' }}
+                            />
+                          </div>
+                          <span className={`text-[9px] ${p.color}`}>{p.status}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* AI processing indicator */}
+                    <div className="rounded-xl bg-gradient-to-r from-blue-500/5 to-cyan-500/5 border border-blue-500/10 p-2.5 flex items-center gap-2">
+                      <motion.div
+                        className="w-5 h-5 rounded-lg bg-blue-500/20 flex items-center justify-center"
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        <svg className="w-3 h-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                        </svg>
+                      </motion.div>
+                      <div>
+                        <div className="text-[9px] text-blue-300">AI Optimizing</div>
+                        <div className="flex gap-0.5 mt-0.5">
+                          {[0, 1, 2].map((j) => (
+                            <motion.div
+                              key={j}
+                              className="w-1 h-1 rounded-full bg-blue-400"
+                              animate={{ opacity: [0.3, 1, 0.3] }}
+                              transition={{ duration: 1.2, repeat: Infinity, delay: j * 0.4 }}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Glow ring */}
-                <div className="absolute inset-0 rounded-3xl border border-blue-400/20 animate-pulse-glow" />
+                {/* Glow border edge */}
+                <div className="absolute inset-0 rounded-[32px] bg-gradient-to-b from-blue-400/5 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Radiating light lines */}
-              <div className="absolute inset-0 -z-10">
-                {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-                  <div
-                    key={deg}
-                    className="absolute top-1/2 left-1/2 w-px h-32 bg-gradient-to-b from-blue-400/40 to-transparent origin-bottom"
-                    style={{ transform: `translate(-50%, -100%) rotate(${deg}deg)` }}
-                  />
-                ))}
-              </div>
             </motion.div>
 
             {/* Platform logos orbiting */}
-            {platforms.map((p, i) => (
-              <motion.div
-                key={p.name}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 + i * 0.1, duration: 0.5 }}
-                className={`absolute z-20 px-3 py-1.5 rounded-full text-xs font-semibold ${
-                  p.active
-                    ? 'bg-blue-500/20 border border-blue-400/30 text-blue-300'
-                    : 'bg-slate-500/10 border border-slate-500/20 text-slate-400'
-                }`}
-                style={{ left: p.x, top: p.y, transform: 'translate(-50%, -50%)' }}
-                whileHover={{ scale: 1.15, transition: { duration: 0.2 } }}
-              >
-                {p.name}
-              </motion.div>
-            ))}
+            {platforms.map((p, i) => {
+              const tier = tierConfig[p.tier];
+              return (
+                <motion.div
+                  key={p.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: tier.scale }}
+                  transition={{ delay: 1 + i * 0.12, duration: 0.5 }}
+                  className={`absolute z-20 ${tier.sizeClass} ${tier.glowClass} ${p.active ? 'glow ring-1 ring-blue-400/30' : ''} rounded-xl`}
+                  style={{ left: p.x, top: p.y, transform: 'translate(-50%, -50%)' }}
+                  whileHover={{ scale: tier.scale * 1.2, transition: { duration: 0.2 } }}
+                >
+                  <PlatformLogo name={p.name} className="w-full h-full rounded-xl" />
+                  {/* Label below */}
+                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className={`text-[9px] font-medium ${p.active ? 'text-blue-300' : 'text-slate-500'}`}>
+                      {p.name}
+                      {p.name === 'VK' && <span className="ml-1 text-green-400">●</span>}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
@@ -265,10 +548,10 @@ export default function HeroSection() {
           transition={{ delay: 2.5, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
           onClick={() => {
-            document.getElementById('preview-cards')?.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('feature-overview')?.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          <span className="text-xs text-slate-500">向下滚动</span>
+          <span className="text-xs text-slate-500">{t('hero.scrollHint')}</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
@@ -278,42 +561,6 @@ export default function HeroSection() {
             </svg>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* 4×1 Preview cards below hero */}
-      <div
-        id="preview-cards"
-        className="absolute bottom-[-240px] left-0 right-0 z-20 hidden lg:block"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-4 gap-4">
-            {previewCards.map((card, i) => (
-              <motion.a
-                key={card.id}
-                href={`#${card.id}`}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group p-5 rounded-2xl glass glass-hover cursor-pointer"
-              >
-                <div className="text-blue-400 mb-3 group-hover:text-blue-300 transition-colors">
-                  {card.icon}
-                </div>
-                <h3 className="font-semibold text-sm text-white mb-1.5">{card.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
-                  {card.desc}
-                </p>
-                <div className="mt-3 flex items-center gap-1 text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  了解更多
-                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -1,8 +1,111 @@
 {
-  "nav": { "features": "Recursos", "platforms": "Plataformas", "solutions": "Soluções", "resources": "Recursos", "login": "Entrar", "trial": "Teste Grátis 14 Dias" },
-  "hero": { "title": "AI-Powered Ad Placement, Let Growth Happen Automatically", "subtitle": "A primeira plataforma de anúncios multi-plataforma orientada por demanda do mundo. Descreva suas necessidades em linguagem simples, e a IA se adapta automaticamente ao VK, Yandex, TikTok, Meta e outras plataformas globais.", "ctaPrimary": "Começar Teste Grátis", "ctaSecondary": "Agendar Demo", "tagPlatforms": "Cobertura de 10+ plataformas de anúncios globais", "tagVK": "VK Suportado", "tagComing": "Yandex · Transsion · Huawei · Xiaomi Em Breve" },
-  "process": { "title": "Apenas 3 Passos para Anúncios Globais com IA", "steps": [{ "title": "Descreva", "desc": "Diga à IA o que e onde anunciar", "detail": "IA identifica automaticamente todos os requisitos da plataforma" }, { "title": "Confirme", "desc": "Revise as informações e publique em todas as plataformas", "detail": "Validação automática entre plataformas, bloqueio de versão, seguro" }, { "title": "Crescimento Automático", "desc": "Monitoramento e otimização contínuos", "detail": "Alocação automática de orçamento, alertas de anomalias" }] },
-  "stats": { "title": "Revolução de Eficiência Baseada em Dados", "hint": "Um otimizador gerencia o trabalho de 5 equipes tradicionais globalmente" },
-  "cta": { "title": "Comece Sua Jornada Global de Anúncios Automatizados", "subtitle": "14 dias grátis, sem cartão de crédito. Consultor dedicado para orientação individual.", "button": "Registrar Grátis", "demo": "Agendar Demo", "social": "Atendendo 200+ equipes de jogos e aplicativos em 10+ países e regiões" },
-  "footer": { "privacy": "Política de Privacidade", "terms": "Termos de Serviço", "copyright": "© 2026 SW ADS. Todos os direitos reservados." }
+  "nav": {
+    "features": "Recursos",
+    "platforms": "Plataformas",
+    "solutions": "Soluções",
+    "resources": "Recursos",
+    "login": "Entrar",
+    "trial": "Teste Grátis 14 Dias"
+  },
+  "hero": {
+    "title": "AI-Powered Ad Placement, Let Growth Happen Automatically",
+    "subtitle": "A primeira plataforma de anúncios multi-plataforma orientada por demanda do mundo. Descreva suas necessidades em linguagem simples, e a IA se adapta automaticamente ao VK, Yandex, TikTok, Meta e outras plataformas globais.",
+    "ctaPrimary": "Começar Teste Grátis",
+    "ctaSecondary": "Agendar Demo",
+    "tagPlatforms": "Cobertura de 10+ plataformas de anúncios globais",
+    "tagVK": "VK Suportado",
+    "tagComing": "Yandex · Transsion · Huawei · Xiaomi Em Breve",
+    "scrollHint": "Role para explorar mais"
+  },
+  "featureOverview": {
+    "title": "Explore Todos os Destaques do SW ADS",
+    "subtitle": "Clique em um cartão para ir para a seção correspondente",
+    "cards": [
+      {
+        "title": "6 Problemas Resolvidos",
+        "bullets": [
+          "Operações repetitivas em múltiplas plataformas",
+          "Dados fragmentados sem insights unificados"
+        ]
+      },
+      {
+        "title": "3 Passos para Anúncios Globais",
+        "bullets": [
+          "Descreva necessidades, IA analisa",
+          "Confirme com um clique, otimização automática"
+        ]
+      },
+      {
+        "title": "4 Capacidades",
+        "bullets": [
+          "Criação de campanhas com IA",
+          "Gestão unificada de anúncios globais"
+        ]
+      },
+      {
+        "title": "Cobertura de Plataformas",
+        "bullets": [
+          "Integração com 10+ plataformas globais",
+          "Acesso com um clique a mercados emergentes"
+        ]
+      },
+      {
+        "title": "Eficiência por Dados",
+        "bullets": [
+          "Aumento de 300% na eficiência",
+          "Redução de 95% no trabalho manual"
+        ]
+      },
+      {
+        "title": "Soluções Setoriais",
+        "bullets": [
+          "Jogos, e-commerce, fintech e mais",
+          "Estratégias personalizadas por setor"
+        ]
+      },
+      {
+        "title": "Segurança Empresarial",
+        "bullets": [
+          "Conformidade com GDPR",
+          "Certificação SOC 2, criptografia ponta a ponta"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "title": "Apenas 3 Passos para Anúncios Globais com IA",
+    "steps": [
+      {
+        "title": "Descreva",
+        "desc": "Diga à IA o que e onde anunciar",
+        "detail": "IA identifica automaticamente todos os requisitos da plataforma"
+      },
+      {
+        "title": "Confirme",
+        "desc": "Revise as informações e publique em todas as plataformas",
+        "detail": "Validação automática entre plataformas, bloqueio de versão, seguro"
+      },
+      {
+        "title": "Crescimento Automático",
+        "desc": "Monitoramento e otimização contínuos",
+        "detail": "Alocação automática de orçamento, alertas de anomalias"
+      }
+    ]
+  },
+  "stats": {
+    "title": "Revolução de Eficiência Baseada em Dados",
+    "hint": "Um otimizador gerencia o trabalho de 5 equipes tradicionais globalmente"
+  },
+  "cta": {
+    "title": "Comece Sua Jornada Global de Anúncios Automatizados",
+    "subtitle": "14 dias grátis, sem cartão de crédito. Consultor dedicado para orientação individual.",
+    "button": "Registrar Grátis",
+    "demo": "Agendar Demo",
+    "social": "Atendendo 200+ equipes de jogos e aplicativos em 10+ países e regiões"
+  },
+  "footer": {
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "copyright": "© 2026 SW ADS. Todos os direitos reservados."
+  }
 }

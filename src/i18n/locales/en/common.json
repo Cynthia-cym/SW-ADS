@@ -14,53 +14,319 @@
     "ctaSecondary": "Book a Demo",
     "tagPlatforms": "One-click coverage across 10+ global ad platforms",
     "tagVK": "VK Supported",
-    "tagComing": "Yandex · Transsion · Huawei · Xiaomi Coming Soon"
+    "tagComing": "Yandex · Transsion · Huawei · Xiaomi Coming Soon",
+    "scrollHint": "Scroll down to explore more"
+  },
+  "featureOverview": {
+    "title": "Explore All SW ADS Highlights",
+    "subtitle": "Click a card to jump to the corresponding section and discover our AI-powered one-click global ad capabilities",
+    "cards": [
+      {
+        "title": "6 Pain Points Solved",
+        "bullets": [
+          "Repetitive multi-platform operations",
+          "Fragmented data without unified insights"
+        ]
+      },
+      {
+        "title": "3-Step Global Ads",
+        "bullets": [
+          "Describe needs, AI analyzes",
+          "One-click confirm, auto-optimize"
+        ]
+      },
+      {
+        "title": "Four Core Capabilities",
+        "bullets": [
+          "AI-powered ad campaign builder",
+          "Unified global ad management"
+        ]
+      },
+      {
+        "title": "Global Platform Coverage",
+        "bullets": [
+          "10+ global platforms integrated",
+          "One-click access to high-growth markets"
+        ]
+      },
+      {
+        "title": "Data-Driven Efficiency",
+        "bullets": [
+          "300% efficiency boost",
+          "95% reduction in manual work"
+        ]
+      },
+      {
+        "title": "Industry Solutions",
+        "bullets": [
+          "Gaming, e-commerce, fintech & more",
+          "Tailored ad strategies per vertical"
+        ]
+      },
+      {
+        "title": "Enterprise Security",
+        "bullets": [
+          "GDPR compliance",
+          "SOC 2 certified, end-to-end encryption"
+        ]
+      }
+    ]
   },
   "preview": {
     "title": "Why Choose SW ADS",
+    "learnMore": "Learn more",
     "cards": [
-      { "title": "AI Smart Build", "desc": "One input, AI generates ad plans for all platforms" },
-      { "title": "Unified Management", "desc": "One dashboard for all platforms, bulk edit & push" },
-      { "title": "Intelligent Analytics", "desc": "Data-driven cross-platform comparison & budget optimization" },
-      { "title": "Global Coverage", "desc": "10+ platforms deeply integrated, expanding continuously" }
+      {
+        "title": "AI Smart Build",
+        "desc": "One input, AI generates ad plans for all platforms"
+      },
+      {
+        "title": "Unified Management",
+        "desc": "One dashboard for all platforms, bulk edit & push"
+      },
+      {
+        "title": "Intelligent Analytics",
+        "desc": "Data-driven cross-platform comparison & budget optimization"
+      },
+      {
+        "title": "Global Coverage",
+        "desc": "10+ platforms deeply integrated, expanding continuously"
+      }
     ]
   },
   "painPoints": {
     "title": "Say Goodbye to the 6 Nightmares of Traditional Ad Buying",
     "subtitle": "We crush every pain point with AI",
     "traditional": "Traditional Multi-Platform",
-    "swads": "SW ADS AI One-Click"
+    "swads": "SW ADS AI One-Click",
+    "items": [
+      {
+        "traditional": "Each platform built separately, wasting 10+ hours on repeat work",
+        "swads": "One input — AI auto-generates all platform plans in 10 minutes"
+      },
+      {
+        "traditional": "Managing 10+ platform accounts simultaneously, tedious and error-prone",
+        "swads": "One dashboard manages all accounts, with one-click bulk operations"
+      },
+      {
+        "traditional": "Different rules for every platform, steep learning curve",
+        "swads": "No need to learn platform rules — AI auto-adapts all details"
+      },
+      {
+        "traditional": "Data scattered across platforms, impossible to analyze holistically",
+        "swads": "Cross-platform data aggregation, one board for global performance"
+      },
+      {
+        "traditional": "Poor support for emerging market platforms, no automation tools",
+        "swads": "Deep optimization for Transsion, Yandex and other high-growth platforms"
+      },
+      {
+        "traditional": "No change tracking, mistakes can't be undone",
+        "swads": "Full-platform versioning, all changes traceable and reversible"
+      }
+    ]
   },
   "process": {
     "title": "Just 3 Steps to Global Ad Placement with AI",
     "steps": [
-      { "title": "Describe Need", "desc": "Tell AI what and where to advertise in plain language", "detail": "AI auto-identifies all platform requirements and fills in missing info" },
-      { "title": "One-Click Confirm", "desc": "Review key info, push to all target platforms with one click", "detail": "Cross-platform auto-validation, version locking, safe and reliable" },
-      { "title": "Auto Growth", "desc": "Continuous monitoring and optimization, let growth happen", "detail": "Auto budget allocation, anomaly alerts, performance comparison" }
+      {
+        "title": "Describe Need",
+        "desc": "Tell AI what and where to advertise in plain language",
+        "detail": "AI auto-identifies all platform requirements and fills in missing info"
+      },
+      {
+        "title": "One-Click Confirm",
+        "desc": "Review key info, push to all target platforms with one click",
+        "detail": "Cross-platform auto-validation, version locking, safe and reliable"
+      },
+      {
+        "title": "Auto Growth",
+        "desc": "Continuous monitoring and optimization, let growth happen",
+        "detail": "Auto budget allocation, anomaly alerts, performance comparison"
+      }
     ]
   },
   "capabilities": {
     "title": "Four Core Capabilities for True One-Click Ad Placement",
-    "subtitle": "From setup to optimization, full-chain AI empowers global advertising"
+    "subtitle": "From setup to optimization, full-chain AI empowers global advertising",
+    "cards": [
+      {
+        "title": "AI Smart Build",
+        "subtitle": "One input, AI generates cross-platform ad plans automatically",
+        "details": [
+          {
+            "label": "Natural Language Input",
+            "desc": "Describe ad needs in plain language, no platform rules to learn"
+          },
+          {
+            "label": "Auto Asset Adaptation",
+            "desc": "AI auto-adjusts creative sizes and formats per platform specs"
+          },
+          {
+            "label": "Smart Targeting",
+            "desc": "Auto-recommends optimal audience targeting based on target market"
+          }
+        ]
+      },
+      {
+        "title": "Unified Management",
+        "subtitle": "One dashboard to manage all platform accounts",
+        "details": [
+          {
+            "label": "Unified Dashboard",
+            "desc": "All platform accounts in one place, no more tab switching"
+          },
+          {
+            "label": "Bulk Operations",
+            "desc": "Edit once, push to all target platforms in one click"
+          },
+          {
+            "label": "Account Management",
+            "desc": "Unified permissions, billing, and reporting"
+          }
+        ]
+      },
+      {
+        "title": "Intelligent Analytics",
+        "subtitle": "Aggregate all platform data, auto-compare performance",
+        "details": [
+          {
+            "label": "Cross-Platform Analytics",
+            "desc": "One dashboard for global ad performance, real-time updates"
+          },
+          {
+            "label": "Smart Budget Allocation",
+            "desc": "AI auto-optimizes budget across platforms based on ROI"
+          },
+          {
+            "label": "Anomaly Alerts",
+            "desc": "Auto-alert on performance anomalies, reducing human error"
+          }
+        ]
+      },
+      {
+        "title": "Global Coverage",
+        "subtitle": "Supporting 10+ global ad platforms",
+        "details": [
+          {
+            "label": "Deep API Integration",
+            "desc": "Full API integration and rule adaptation for every platform"
+          },
+          {
+            "label": "Complete Rule Adaptation",
+            "desc": "Auto-adapts to each platform's ad policies and review rules"
+          },
+          {
+            "label": "One-Click Automation",
+            "desc": "Full-process automation, truly one-click global ad placement"
+          }
+        ]
+      }
+    ]
   },
   "platformCoverage": {
     "title": "One-Click Coverage of Global High-Growth Markets",
     "subtitle": "Deep optimization for emerging markets while supporting global mainstream platforms. Each platform features deep API integration and rule adaptation for complete one-click automated delivery.",
+    "mapLabel": "Global Platform Coverage Overview",
     "active": "Live",
     "coming": "Coming Soon",
-    "planned": "Planned"
+    "planned": "Planned",
+    "platforms": [
+      {
+        "name": "VK",
+        "region": "Russian-speaking"
+      },
+      {
+        "name": "Yandex",
+        "region": "Russian-speaking"
+      },
+      {
+        "name": "Transsion",
+        "region": "Africa"
+      },
+      {
+        "name": "Huawei",
+        "region": "SEA/Europe"
+      },
+      {
+        "name": "Xiaomi",
+        "region": "SEA/Europe"
+      },
+      {
+        "name": "TikTok",
+        "region": "Global"
+      },
+      {
+        "name": "Meta",
+        "region": "Global"
+      },
+      {
+        "name": "Google",
+        "region": "Global"
+      }
+    ]
   },
   "stats": {
     "title": "Data-Driven, Efficiency Revolution",
-    "hint": "One optimizer can manage the workload of 5 traditional teams globally"
+    "hint": "One optimizer can manage the workload of 5 traditional teams globally",
+    "labels": [
+      "Ad Efficiency Increase",
+      "Manual Work Reduced",
+      "Global Platforms Supported",
+      "Human Errors Reduced"
+    ]
   },
   "industries": {
     "title": "Covering All Industries, Precisely Reach Target Users",
-    "subtitle": "Whatever your business size and industry, SW ADS provides tailored advertising solutions"
+    "subtitle": "Whatever your business size and industry, SW ADS provides tailored advertising solutions",
+    "items": [
+      {
+        "name": "Gaming Overseas",
+        "desc": "Precise targeting of emerging market players, AI auto-generates localized assets"
+      },
+      {
+        "name": "App Promotion",
+        "desc": "Cross-platform bulk campaigns, ASO and UA data analysis"
+      },
+      {
+        "name": "E-Commerce",
+        "desc": "Multi-market platform sync, ROAS auto-optimization"
+      },
+      {
+        "name": "FinTech",
+        "desc": "Compliant ad framework, auto-adapts to financial ad regulations per market"
+      },
+      {
+        "name": "Online Education",
+        "desc": "Low-cost acquisition, precise targeting based on user profiles"
+      },
+      {
+        "name": "Enterprise Services",
+        "desc": "B2B precise targeting, unified multi-region brand campaign management"
+      }
+    ]
   },
   "security": {
     "title": "Enterprise-Grade Security You Can Trust",
-    "subtitle": "Your data security is our top priority"
+    "subtitle": "Your data security is our top priority",
+    "items": [
+      {
+        "title": "GDPR Compliant",
+        "desc": "Strict compliance with EU General Data Protection Regulation"
+      },
+      {
+        "title": "SOC 2 Certified",
+        "desc": "Certified to international security assurance standards"
+      },
+      {
+        "title": "Encrypted Transmission",
+        "desc": "TLS 1.3 + AES-256 end-to-end encryption"
+      },
+      {
+        "title": "Fine-Grained Access Control",
+        "desc": "RBAC-based granular role permission management"
+      }
+    ]
   },
   "cta": {
     "title": "Start Your Global Automated Advertising Journey Now",
@@ -76,6 +342,52 @@
     "company": "Company",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "copyright": "© 2026 SW ADS. All rights reserved."
+    "copyright": "© 2026 SW ADS. All rights reserved.",
+    "productLinks": [
+      {
+        "href": "/features",
+        "label": "Features"
+      },
+      {
+        "href": "/platforms",
+        "label": "Platforms"
+      },
+      {
+        "href": "/pricing",
+        "label": "Pricing"
+      }
+    ],
+    "resourceLinks": [
+      {
+        "href": "/docs",
+        "label": "Documentation"
+      },
+      {
+        "href": "/guides",
+        "label": "Overseas Guides"
+      },
+      {
+        "href": "/cases",
+        "label": "Case Studies"
+      }
+    ],
+    "companyLinks": [
+      {
+        "href": "/about",
+        "label": "About Us"
+      },
+      {
+        "href": "/team",
+        "label": "Team"
+      },
+      {
+        "href": "/careers",
+        "label": "Careers"
+      },
+      {
+        "href": "/contact",
+        "label": "Contact"
+      }
+    ]
   }
 }

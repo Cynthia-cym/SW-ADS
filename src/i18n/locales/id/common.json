@@ -1,8 +1,111 @@
 {
-  "nav": { "features": "Fitur", "platforms": "Platform", "solutions": "Solusi", "resources": "Sumber Daya", "login": "Masuk", "trial": "Uji Coba 14 Hari Gratis" },
-  "hero": { "title": "AI-Powered Ad Placement, Let Growth Happen Automatically", "subtitle": "Platform iklan luar negeri multi-platform berbasis permintaan pertama di dunia. Jelaskan kebutuhan Anda dalam bahasa sederhana, dan AI otomatis menyesuaikan ke VK, Yandex, TikTok, Meta, dan platform global lainnya.", "ctaPrimary": "Mulai Uji Coba Gratis", "ctaSecondary": "Pesan Demo", "tagPlatforms": "Jangkauan 10+ platform iklan global", "tagVK": "VK Didukung", "tagComing": "Yandex · Transsion · Huawei · Xiaomi Segera Hadir" },
-  "process": { "title": "Hanya 3 Langkah ke Iklan Global dengan AI", "steps": [{ "title": "Jelaskan Kebutuhan", "desc": "Beri tahu AI apa dan di mana beriklan", "detail": "AI otomatis mengidentifikasi semua persyaratan platform" }, { "title": "Konfirmasi Sekali Klik", "desc": "Tinjau info dan kirim ke semua platform", "detail": "Validasi otomatis lintas platform, penguncian versi, aman" }, { "title": "Pertumbuhan Otomatis", "desc": "Pemantauan dan optimalisasi berkelanjutan", "detail": "Alokasi anggaran otomatis, peringatan anomali" }] },
-  "stats": { "title": "Revolusi Efisiensi Berbasis Data", "hint": "Satu pengoptimal mengelola pekerjaan 5 tim tradisional secara global" },
-  "cta": { "title": "Mulai Perjalanan Iklan Otomatis Global Anda", "subtitle": "Uji coba gratis 14 hari, tanpa kartu kredit. Konsultan khusus untuk panduan 1-on-1.", "button": "Daftar Gratis", "demo": "Pesan Demo", "social": "Melayani 200+ tim game & aplikasi di 10+ negara dan wilayah" },
-  "footer": { "privacy": "Kebijakan Privasi", "terms": "Ketentuan Layanan", "copyright": "© 2026 SW ADS. Hak cipta dilindungi." }
+  "nav": {
+    "features": "Fitur",
+    "platforms": "Platform",
+    "solutions": "Solusi",
+    "resources": "Sumber Daya",
+    "login": "Masuk",
+    "trial": "Uji Coba 14 Hari Gratis"
+  },
+  "hero": {
+    "title": "AI-Powered Ad Placement, Let Growth Happen Automatically",
+    "subtitle": "Platform iklan luar negeri multi-platform berbasis permintaan pertama di dunia. Jelaskan kebutuhan Anda dalam bahasa sederhana, dan AI otomatis menyesuaikan ke VK, Yandex, TikTok, Meta, dan platform global lainnya.",
+    "ctaPrimary": "Mulai Uji Coba Gratis",
+    "ctaSecondary": "Pesan Demo",
+    "tagPlatforms": "Jangkauan 10+ platform iklan global",
+    "tagVK": "VK Didukung",
+    "tagComing": "Yandex · Transsion · Huawei · Xiaomi Segera Hadir",
+    "scrollHint": "Gulir ke bawah untuk menjelajahi lebih lanjut"
+  },
+  "featureOverview": {
+    "title": "Jelajahi Semua Fitur Unggulan SW ADS",
+    "subtitle": "Klik kartu untuk melompat ke bagian terkait",
+    "cards": [
+      {
+        "title": "6 Masalah Teratasi",
+        "bullets": [
+          "Operasi berulang di banyak platform",
+          "Data terfragmentasi tanpa wawasan terpadu"
+        ]
+      },
+      {
+        "title": "3 Langkah Iklan Global",
+        "bullets": [
+          "Jelaskan kebutuhan, AI menganalisis",
+          "Konfirmasi sekali klik, optimasi otomatis"
+        ]
+      },
+      {
+        "title": "4 Kemampuan Utama",
+        "bullets": [
+          "Pembuatan kampanye iklan dengan AI",
+          "Manajemen iklan global terpadu"
+        ]
+      },
+      {
+        "title": "Cakupan Platform Global",
+        "bullets": [
+          "Integrasi dengan 10+ platform global",
+          "Akses sekali klik ke pasar berkembang"
+        ]
+      },
+      {
+        "title": "Efisiensi Berbasis Data",
+        "bullets": [
+          "Peningkatan efisiensi 300%",
+          "Pengurangan kerja manual 95%"
+        ]
+      },
+      {
+        "title": "Solusi Industri",
+        "bullets": [
+          "Game, e-commerce, fintech, dan lainnya",
+          "Strategi iklan yang disesuaikan per industri"
+        ]
+      },
+      {
+        "title": "Keamanan Perusahaan",
+        "bullets": [
+          "Kepatuhan GDPR",
+          "Sertifikasi SOC 2, enkripsi end-to-end"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "title": "Hanya 3 Langkah ke Iklan Global dengan AI",
+    "steps": [
+      {
+        "title": "Jelaskan Kebutuhan",
+        "desc": "Beri tahu AI apa dan di mana beriklan",
+        "detail": "AI otomatis mengidentifikasi semua persyaratan platform"
+      },
+      {
+        "title": "Konfirmasi Sekali Klik",
+        "desc": "Tinjau info dan kirim ke semua platform",
+        "detail": "Validasi otomatis lintas platform, penguncian versi, aman"
+      },
+      {
+        "title": "Pertumbuhan Otomatis",
+        "desc": "Pemantauan dan optimalisasi berkelanjutan",
+        "detail": "Alokasi anggaran otomatis, peringatan anomali"
+      }
+    ]
+  },
+  "stats": {
+    "title": "Revolusi Efisiensi Berbasis Data",
+    "hint": "Satu pengoptimal mengelola pekerjaan 5 tim tradisional secara global"
+  },
+  "cta": {
+    "title": "Mulai Perjalanan Iklan Otomatis Global Anda",
+    "subtitle": "Uji coba gratis 14 hari, tanpa kartu kredit. Konsultan khusus untuk panduan 1-on-1.",
+    "button": "Daftar Gratis",
+    "demo": "Pesan Demo",
+    "social": "Melayani 200+ tim game & aplikasi di 10+ negara dan wilayah"
+  },
+  "footer": {
+    "privacy": "Kebijakan Privasi",
+    "terms": "Ketentuan Layanan",
+    "copyright": "© 2026 SW ADS. Hak cipta dilindungi."
+  }
 }

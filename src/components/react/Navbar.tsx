@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 
-const navLinks = [
-  { href: '#features', label: '产品功能' },
-  { href: '#platforms', label: '全球平台' },
-  { href: '#solutions', label: '解决方案' },
-  { href: '#resources', label: '资源中心' },
-];
-
 export default function Navbar() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -24,6 +19,13 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  const navLinks = [
+    { href: '#features', label: t('nav.features') },
+    { href: '#platforms', label: t('nav.platforms') },
+    { href: '#solutions', label: t('nav.solutions') },
+    { href: '#resources', label: t('nav.resources') },
+  ];
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -32,14 +34,14 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[90rem] mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+        <a href="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
             <span className="text-white font-bold text-xs">SW</span>
           </div>
           <span
-            className={`font-bold text-lg tracking-tight transition-colors duration-300 ${
+            className={`font-bold text-xl tracking-tight transition-colors duration-300 ${
               scrolled ? 'text-slate-900' : 'text-white'
             }`}
           >
@@ -48,13 +50,13 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`relative text-sm font-medium transition-colors duration-200 hover:text-blue-500 group ${
-                scrolled ? 'text-slate-700' : 'text-white/80'
+              className={`relative text-[15px] font-medium transition-colors duration-200 hover:text-blue-500 group ${
+                scrolled ? 'text-slate-700' : 'text-white/90'
               }`}
             >
               {link.label}
@@ -65,22 +67,22 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
-          <LanguageSwitcher />
+          <LanguageSwitcher scrolled={scrolled} />
           <a
-            href="/login"
-            className={`text-sm font-medium px-4 py-2 rounded-lg border transition-all duration-200 hover:bg-white/10 ${
+            href="https://ads.mincode.cn/"
+            className={`text-[15px] font-medium px-5 py-2.5 rounded-lg border transition-all duration-200 hover:bg-white/10 ${
               scrolled
                 ? 'border-slate-300 text-slate-700'
                 : 'border-white/30 text-white'
             }`}
           >
-            登录
+            {t('nav.login')}
           </a>
           <a
-            href="/signup"
-            className="text-sm font-semibold px-5 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 hover:scale-105"
+            href="https://ads.mincode.cn/"
+            className="text-[15px] font-semibold px-6 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 hover:scale-105"
           >
-            免费试用14天
+            {t('nav.trial')}
           </a>
         </div>
 
@@ -133,18 +135,18 @@ export default function Navbar() {
             ))}
             <div className="flex flex-col gap-4 mt-8 w-64">
               <a
-                href="/login"
+                href="https://ads.mincode.cn/"
                 onClick={() => setMobileOpen(false)}
                 className="text-center text-sm font-medium px-4 py-3 rounded-xl border border-white/30 text-white hover:bg-white/10 transition-colors"
               >
-                登录
+                {t('nav.login')}
               </a>
               <a
-                href="/signup"
+                href="https://ads.mincode.cn/"
                 onClick={() => setMobileOpen(false)}
                 className="text-center text-sm font-semibold px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white"
               >
-                免费试用14天
+                {t('nav.trial')}
               </a>
             </div>
           </motion.div>

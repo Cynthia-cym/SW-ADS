@@ -1,11 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import '../../lib/i18n';
 
 const stats = [
-  { value: 300, suffix: '%', label: '投放效率提升' },
-  { value: 95, suffix: '%', label: '人工操作减少' },
-  { value: 10, suffix: '+', label: '全球平台支持' },
-  { value: 80, suffix: '%', label: '人为错误降低' },
+  { value: 300, suffix: '%' },
+  { value: 95, suffix: '%' },
+  { value: 10, suffix: '+' },
+  { value: 80, suffix: '%' },
 ];
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
@@ -49,9 +51,10 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 }
 
 export default function CounterSection() {
+  const { t } = useTranslation();
+
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background */}
+    <section id="stats" className="py-24 relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-brand-bg via-brand-surface to-brand-bg" />
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]" />
@@ -64,10 +67,10 @@ export default function CounterSection() {
           transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl font-bold text-center text-white mb-4"
         >
-          数据见证，效率革命
+          {t('stats.title')}
         </motion.h2>
         <p className="text-center text-slate-400 mb-4">
-          一个优化师即可管理原来5个团队的全球投放工作量
+          {t('stats.hint')}
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
@@ -81,7 +84,7 @@ export default function CounterSection() {
               className="glass p-6 rounded-2xl text-center"
             >
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <div className="text-sm text-slate-400 mt-3">{stat.label}</div>
+              <div className="text-sm text-slate-400 mt-3">{t(`stats.labels.${i}`)}</div>
             </motion.div>
           ))}
         </div>

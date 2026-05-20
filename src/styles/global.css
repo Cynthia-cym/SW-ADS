@@ -101,3 +101,11 @@
   animation: shimmer 2s infinite;
 }
 .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+.card-hover-glow {
+  transition: all 300ms ease;
+}
+.card-hover-glow:hover {
+  box-shadow: 0 10px 25px -5px var(--glow-color);
+  transform: translateY(-4px);
+}

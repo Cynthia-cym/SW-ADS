@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/react/Navbar';
+import HeroSection from '../../components/react/HeroSection';
+import PainPointComparison from '../../components/react/PainPointComparison';
+import ProcessSteps from '../../components/react/ProcessSteps';
+import CapabilityDetails from '../../components/react/CapabilityDetails';
+import PlatformCoverage from '../../components/react/PlatformCoverage';
+import CounterSection from '../../components/react/CounterSection';
+import IndustrySolutions from '../../components/react/IndustrySolutions';
+import SecuritySection from '../../components/react/SecuritySection';
+import FinalCTA from '../../components/react/FinalCTA';
+import Footer from '../../components/react/Footer';
+---
+
+<Layout
+  title="SW ADS — إعلانات بنقرة واحدة بالذكاء الاصطناعي، دع النمو يحدث تلقائياً"
+  description="أول منصة إعلانات خارجية متعددة المنصات تعتمد على الطلب في العالم. الذكاء الاصطناعي يتكيف تلقائياً مع VK وYandex وTikTok وMeta."
+  locale="ar"
+>
+  <Navbar client:only="react" />
+
+  <main>
+    <HeroSection client:only="react" />
+
+    <div class="hidden lg:block h-56" aria-hidden="true" />
+
+    <PainPointComparison client:only="react" />
+    <ProcessSteps client:only="react" />
+    <CapabilityDetails client:only="react" />
+    <PlatformCoverage client:only="react" />
+    <CounterSection client:only="react" />
+    <IndustrySolutions client:only="react" />
+    <SecuritySection client:only="react" />
+    <FinalCTA client:only="react" />
+  </main>
+
+  <Footer client:only="react" />
+</Layout>

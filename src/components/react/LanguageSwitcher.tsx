@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import '../../lib/i18n';
 
 const languages = [
   { code: 'zh-CN', label: '简体中文', flag: '🇨🇳' },
@@ -10,7 +11,7 @@ const languages = [
   { code: 'id', label: 'Bahasa Indonesia', flag: '🇮🇩' },
 ];
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ scrolled = false }: { scrolled?: boolean }) {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -37,7 +38,11 @@ export default function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm transition-colors ${
+          scrolled
+            ? 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+            : 'text-slate-400 hover:text-white hover:bg-white/5'
+        }`}
       >
         <span>{currentLang.flag}</span>
         <span className="hidden sm:inline">{currentLang.label}</span>
@@ -47,7 +52,11 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 w-48 rounded-xl glass border-blue-500/20 py-1 shadow-2xl z-50">
+        <div className={`absolute right-0 top-full mt-1 w-48 rounded-xl py-1 shadow-2xl z-50 border ${
+          scrolled
+            ? 'bg-white border-slate-200'
+            : 'glass border-blue-500/20'
+        }`}>
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -55,7 +64,9 @@ export default function LanguageSwitcher() {
               className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                 lang.code === i18n.language
                   ? 'text-blue-400 bg-blue-500/10'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  : scrolled
+                    ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
               }`}
             >
               <span>{lang.flag}</span>
